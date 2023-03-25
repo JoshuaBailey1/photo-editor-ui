@@ -2,6 +2,7 @@
   <div class="fileSelect">
     <input type="file" @change="onFileSelected" />
     <button @click="onImport">Upload</button>
+    <img src="this.selectedFile" />
   </div>
 </template>
 
@@ -22,9 +23,14 @@ export default defineComponent({
       console.log(this.selectedFile);
     },
     async onImport() {
-      await axios.post("http://localhost:8080/adjustment/brightness", {
-        intensity: 0.1,
-        image: this.selectedFile,
+      const fd = new FormData();
+      fd.append("image", this.selectedFile!);
+      fd.append("intensity", "0.5");
+
+      await axios.post("http://localhost:8080/adjustment/contrast", fd, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
     },
   },
