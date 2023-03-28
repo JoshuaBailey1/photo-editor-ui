@@ -2,7 +2,6 @@
   <div class="fileSelect">
     <input type="file" @change="onFileSelected" />
     <button @click="onImport">Upload</button>
-    <img src="this.selectedFile" />
   </div>
 </template>
 
@@ -41,6 +40,7 @@ export default defineComponent({
 <style scoped>
 h3 {
   margin: 40px 0 0;
+  background-color: grey;
 }
 ul {
   list-style-type: none;
@@ -52,5 +52,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.fileSelect {
+  background-color: gray;
 }
 </style>

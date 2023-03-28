@@ -1,27 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/wowchards.png" />
-  <FileSelect />
+  <div class="container">
+    <photoEditor />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import FileSelect from "./components/FileSelect.vue";
+import photoEditor from "./components/PhotoEditor.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    FileSelect,
+    photoEditor,
   },
 });
 </script>
 
 <style>
+body {
+  background: grey;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  margin: auto;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
