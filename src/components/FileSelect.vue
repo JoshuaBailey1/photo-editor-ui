@@ -1,5 +1,5 @@
 <template>
-  <div class="fileSelect">
+  <div>
     <input type="file" @change="onFileSelected" />
     <button @click="onImport">Upload</button>
   </div>
@@ -10,7 +10,7 @@ import axios from "axios";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "FileSelect",
+  name: "fileSelect",
   data() {
     return {
       selectedFile: null,
@@ -36,24 +36,4 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-  background-color: grey;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.fileSelect {
-  background-color: gray;
-}
-</style>
+<style></style>

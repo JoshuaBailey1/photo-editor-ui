@@ -2,11 +2,13 @@
   <div class="photoEditor">
     <imageBox class="mainImage" />
     <slidersBox class="allSliders" />
+    <fileSelect class="fileSelector" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import fileSelect from "./FileSelect.vue";
 import imageBox from "./ImageBox.vue";
 import slidersBox from "./SlidersBox.vue";
 
@@ -15,6 +17,7 @@ export default defineComponent({
   components: {
     imageBox,
     slidersBox,
+    fileSelect,
   },
 });
 </script>
@@ -26,9 +29,17 @@ export default defineComponent({
   grid-template-rows: 100%;
 }
 .mainImage {
+  margin: 2vh;
+  align-items: center;
+  grid-row-start: 1;
   grid-column-start: 1;
 }
 .allSliders {
+  grid-row-start: 1;
+  grid-column-start: 2;
+}
+.fileSelector {
+  grid-row-start: 1;
   grid-column-start: 2;
 }
 </style>

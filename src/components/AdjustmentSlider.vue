@@ -14,8 +14,9 @@ export default defineComponent({
 
 <style scoped>
 .slider {
+  margin-top: 5vh;
   -webkit-appearance: none;
-  width: 100%;
+  width: 25vw;
   height: 1vw;
   border-radius: 1vw;
   background: #d3d3d3;
@@ -30,7 +31,7 @@ export default defineComponent({
   -webkit-appearance: none;
   appearance: none;
   width: 2vw;
-  height: 2vh;
+  height: 2vw;
   border-radius: 50%;
   background: purple;
   cursor: pointer;
@@ -38,7 +39,7 @@ export default defineComponent({
 
 .slider::-moz-range-thumb {
   width: 2vw;
-  height: 2vh;
+  height: 2vw;
   border-radius: 50%;
   background: purple;
   cursor: pointer;
