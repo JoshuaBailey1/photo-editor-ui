@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <photoEditor />
-  </div>
+  <div class="main"><photoEditor /></div>
 </template>
 
 <script lang="ts">
@@ -17,15 +15,15 @@ export default defineComponent({
 </script>
 
 <style>
-body {
-  background: grey;
+.main {
+  background-color: grey;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
 }
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: auto;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
 }
 </style>

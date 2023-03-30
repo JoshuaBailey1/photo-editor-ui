@@ -1,13 +1,7 @@
 <template>
-  <body>
-    <div class="imageBox">
-      <img
-        alt="stars"
-        src="'data:image;base64,' + $store.state.photo"
-        class="starImage"
-      />
-    </div>
-  </body>
+  <div>
+    <img src="../assets/Final4.jpg" class="starImage" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,12 +14,9 @@ export default defineComponent({
 
 <style scoped>
 .starImage {
-  float: left;
-  border: 25px solid #909090;
-  width: 1200;
-  height: 800px;
-  object-fit: fill;
-  margin-left: auto;
-  margin-right: auto;
+  height: 100%;
+  width: 100%;
+  max-height: 100vh;
+  max-width: 75vw;
 }
 </style>

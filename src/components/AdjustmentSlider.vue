@@ -15,9 +15,9 @@ export default defineComponent({
 <style scoped>
 .slider {
   -webkit-appearance: none;
-  width: 475%;
-  height: 15px;
-  border-radius: 5px;
+  width: 100%;
+  height: 1vw;
+  border-radius: 1vw;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -29,16 +29,16 @@ export default defineComponent({
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 2vw;
+  height: 2vh;
   border-radius: 50%;
   background: purple;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 2vw;
+  height: 2vh;
   border-radius: 50%;
   background: purple;
   cursor: pointer;

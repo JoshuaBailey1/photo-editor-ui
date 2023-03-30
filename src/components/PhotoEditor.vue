@@ -20,13 +20,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-body {
-  background: grey;
+.photoEditor {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 100%;
 }
 .mainImage {
-  float: left;
+  grid-column-start: 1;
 }
 .allSliders {
-  float: right;
+  grid-column-start: 2;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="slidersBox">
+  <div>
     <adjustmentSlider />
     <adjustmentSlider />
     <adjustmentSlider />
