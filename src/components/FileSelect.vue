@@ -1,6 +1,11 @@
 <template>
   <div>
-    <input type="file" @change="onFileSelected" />
+    <input
+      type="file"
+      @change="onFileSelected"
+      accept="image/png, image/jpeg"
+    />
+    />
     <button @click="onImport">Upload</button>
   </div>
 </template>
@@ -11,6 +16,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "fileSelect",
+  computed: {
+    photo(): any {
+      return this.$store.state.photo;
+    },
+  },
   data() {
     return {
       selectedFile: null,
@@ -19,7 +29,13 @@ export default defineComponent({
   methods: {
     onFileSelected(event: any) {
       this.selectedFile = event.target.files[0];
-      console.log(this.selectedFile);
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(this.selectedFile!);
+      fileReader.addEventListener("load", () => {
+        this.$store.dispatch("setPhoto", { photo: fileReader.result });
+      });
+
+      console.log(this.$store.state.photo);
     },
     async onImport() {
       const fd = new FormData();

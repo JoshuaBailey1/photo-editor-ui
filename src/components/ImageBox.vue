@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/Final4.jpg" class="starImage" />
+    <img class="starImage" v-bind:src="$store.state.photo.photo" />
   </div>
 </template>
 
@@ -9,6 +9,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "imageBox",
+  computed: {
+    photo() {
+      return this.$store.state.photo.photo;
+    },
+  },
 });
 </script>
 

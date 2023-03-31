@@ -29,7 +29,6 @@ export default defineComponent({
   grid-template-rows: 100%;
 }
 .mainImage {
-  margin: 2vh;
   align-items: center;
   grid-row-start: 1;
   grid-column-start: 1;

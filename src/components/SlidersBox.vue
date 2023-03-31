@@ -1,6 +1,6 @@
 <template>
   <div>
-    <adjustmentSlider />
+    <adjustmentSlider class="brightness" />
     <adjustmentSlider />
     <adjustmentSlider />
     <adjustmentSlider />

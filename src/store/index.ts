@@ -8,6 +8,8 @@ export default createStore({
   },
   mutations: {
     setPhoto(state, photo: string) {
+      console.log("I got to mutation");
+      console.log(photo);
       state.photo = photo;
     },
   },
@@ -22,6 +24,15 @@ export default createStore({
           throw `Failed to adjust brightness ${e}`;
         });
     },
+
+    setPhoto({ commit }, data: string) {
+      console.log("I got to action");
+      console.log(data);
+      commit("setPhoto", data);
+    },
+  },
+  getters: {
+    getPhoto: (state) => state.photo,
   },
   modules: {},
 });
