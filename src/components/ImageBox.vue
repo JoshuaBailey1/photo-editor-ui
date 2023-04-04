@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="starImage" v-bind:src="$store.state.photo.photo" />
+    <img class="image" v-bind:src="$store.state.photo.photo" />
   </div>
 </template>
 
@@ -13,15 +13,29 @@ export default defineComponent({
     photo() {
       return this.$store.state.photo.photo;
     },
+    brightness() {
+      return `brightness(${this.$store.state.brightness}%)`;
+    },
+    contrast() {
+      return `contrast(${this.$store.state.contrast}%)`;
+    },
+    saturation() {
+      return `saturate(${this.$store.state.saturation}%)`;
+    },
+    filters() {
+      return `brightness(${this.$store.state.brightness}%) contrast(${this.$store.state.contrast}%) saturate(${this.$store.state.saturation}%)`;
+    },
   },
 });
 </script>
 
 <style scoped>
-.starImage {
+.image {
   height: 100%;
   width: 100%;
   max-height: 100vh;
   max-width: 75vw;
+
+  filter: v-bind(filters);
 }
 </style>

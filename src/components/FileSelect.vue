@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -34,19 +33,14 @@ export default defineComponent({
       fileReader.addEventListener("load", () => {
         this.$store.dispatch("setPhoto", { photo: fileReader.result });
       });
-
-      console.log(this.$store.state.photo);
     },
-    async onImport() {
-      const fd = new FormData();
-      fd.append("image", this.selectedFile!);
-      fd.append("intensity", "0.5");
 
-      await axios.post("http://localhost:8080/adjustment/contrast", fd, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+    async onImport() {
+      // await axios.post("http://localhost:8080/adjustment/contrast", fd, {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // });
     },
   },
 });

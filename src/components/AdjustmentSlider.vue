@@ -1,6 +1,7 @@
 <template>
   <div class="sliders">
-    <input type="range" min="-100" max="100" class="slider" />
+    <v-slider v-model="slider1" max="100" min="-100" thumblabel></v-slider>
+    <input type="range" min="-100" max="100" value="0" class="slider" />
   </div>
 </template>
 
@@ -9,6 +10,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "adjustmentSlider",
+  data() {
+    return {
+      slider1: 50,
+    };
+  },
 });
 </script>
 

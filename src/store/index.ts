@@ -1,16 +1,28 @@
 import axios, { AxiosResponse } from "axios";
+
 import { createStore } from "vuex";
 import { AdjustmentRequest } from "./dtos/adjustment.request";
 
 export default createStore({
   state: {
     photo: "",
+    brightness: 100,
+    contrast: 100,
+    saturation: 100,
   },
   mutations: {
     setPhoto(state, photo: string) {
-      console.log("I got to mutation");
-      console.log(photo);
       state.photo = photo;
+    },
+    setBrightness(state, brightness: number) {
+      console.log(brightness);
+      state.brightness = brightness;
+    },
+    setContrast(state, brightness: number) {
+      state.contrast = brightness;
+    },
+    setSaturation(state, brightness: number) {
+      state.saturation = brightness;
     },
   },
   actions: {
@@ -26,13 +38,18 @@ export default createStore({
     },
 
     setPhoto({ commit }, data: string) {
-      console.log("I got to action");
-      console.log(data);
       commit("setPhoto", data);
     },
+    setBrightness({ commit }, data: number) {
+      commit("setBrightness", data);
+    },
+    setContrast({ commit }, data: number) {
+      commit("setContrast", data);
+    },
+    setSaturation({ commit }, data: number) {
+      commit("setSaturation", data);
+    },
   },
-  getters: {
-    getPhoto: (state) => state.photo,
-  },
+  getters: {},
   modules: {},
 });
