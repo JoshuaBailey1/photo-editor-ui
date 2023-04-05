@@ -1,12 +1,14 @@
 <template>
   <div>
-    <input
+    <v-file-input
+      label="Select Image"
+      show-size
+      density="compact"
       type="file"
       @change="onFileSelected"
       accept="image/png, image/jpeg"
+      prepend-icon="mdi-camera"
     />
-    />
-    <button @click="onImport">Upload</button>
   </div>
 </template>
 

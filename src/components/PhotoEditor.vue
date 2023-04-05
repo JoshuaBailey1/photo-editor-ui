@@ -25,20 +25,25 @@ export default defineComponent({
 <style scoped>
 .photoEditor {
   display: grid;
-  grid-template-columns: 75% 25%;
-  grid-template-rows: 100%;
+  grid-template-columns: 1% 74% 24% 1%;
+  grid-template-rows: 2% 23% 73% 2%;
 }
 .mainImage {
-  align-items: center;
-  grid-row-start: 1;
-  grid-column-start: 1;
+  justify-self: stretch;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  align-self: stretch;
 }
 .allSliders {
-  grid-row-start: 1;
-  grid-column-start: 2;
+  grid-row-start: 3;
+  grid-column-start: 3;
+  align-self: center;
 }
 .fileSelector {
-  grid-row-start: 1;
-  grid-column-start: 2;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  /* justify-self: center; */
+  align-self: center;
 }
 </style>

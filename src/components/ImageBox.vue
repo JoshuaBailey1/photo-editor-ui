@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="image" v-bind:src="$store.state.photo.photo" />
+    <v-img class="image" v-bind:src="$store.state.photo.photo" />
   </div>
 </template>
 

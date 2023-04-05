@@ -1,49 +1,55 @@
 <template>
   <div>
-    <adjustmentSlider
-      id="brightness"
+    <v-slider
       v-model="brightness"
-      class="brightness"
-      @input="updateBrightness(+brightness)"
-    />
-    <adjustmentSlider
-      id="contrast"
+      label="brightness"
+      max="200"
+      min="0"
+      thumb-label="always"
+      @vnode-updated="updateBrightness(brightness)"
+    ></v-slider>
+    <v-slider
       v-model="contrast"
-      class="contrast"
-      @input="updateContrast(+contrast)"
-    />
-    <adjustmentSlider
-      id="saturation"
+      label="contrast"
+      max="200"
+      min="0"
+      thumb-label="always"
+      @vnode-updated="updateContrast(contrast)"
+    ></v-slider>
+    <v-slider
       v-model="saturation"
-      class="saturation"
-      @input="updateSaturation(+saturation)"
-    />
-    <adjustmentSlider />
-    <adjustmentSlider />
-    <adjustmentSlider />
+      label="saturation"
+      max="200"
+      min="0"
+      thumb-label="always"
+      @vnode-updated="updateSaturation(saturation)"
+    ></v-slider>
+    <v-btn @click="resetSliders()">Reset</v-btn>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import adjustmentSlider from "./AdjustmentSlider.vue";
 
 export default defineComponent({
   name: "slidersBox",
-  components: {
-    adjustmentSlider,
-  },
   data() {
     return {
-      brightness:
-        (document.getElementById("brightness") as HTMLInputElement)?.value ?? 0,
-      contrast:
-        (document.getElementById("contrast") as HTMLInputElement)?.value ?? 0,
-      saturation:
-        (document.getElementById("saturation") as HTMLInputElement)?.value ?? 0,
+      brightness: 100,
+      contrast: 100,
+      saturation: 100,
     };
   },
   methods: {
+    resetSliders() {
+      this.brightness = 100;
+      console.log("hi?");
+      this.$store.dispatch("setBrightness", this.brightness);
+      this.contrast = 100;
+      this.$store.dispatch("setContrast", this.contrast);
+      this.saturation = 100;
+      this.$store.dispatch("setSaturation", this.saturation);
+    },
     updateBrightness(brightness: number) {
       console.log(brightness);
       this.$store.dispatch("setBrightness", brightness);

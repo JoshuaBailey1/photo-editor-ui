@@ -1,5 +1,7 @@
 <template>
-  <div class="main"><photoEditor /></div>
+  <v-app>
+    <div class="main"><photoEditor /></div>
+  </v-app>
 </template>
 
 <script lang="ts">
