@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-img class="image" v-bind:src="$store.state.photo.photo" />
+    <v-img class="image" v-bind:src="$store.state.photo" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default defineComponent({
   name: "imageBox",
   computed: {
     photo() {
-      return this.$store.state.photo.photo;
+      return this.$store.state.photo;
     },
     brightness() {
       return `brightness(${this.$store.state.brightness}%)`;

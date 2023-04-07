@@ -6,6 +6,7 @@ import { AdjustmentRequest } from "./dtos/adjustment.request";
 export default createStore({
   state: {
     photo: "",
+    photoWithEdits: "",
     brightness: 100,
     contrast: 100,
     saturation: 100,
@@ -15,7 +16,6 @@ export default createStore({
       state.photo = photo;
     },
     setBrightness(state, brightness: number) {
-      console.log(brightness);
       state.brightness = brightness;
     },
     setContrast(state, brightness: number) {

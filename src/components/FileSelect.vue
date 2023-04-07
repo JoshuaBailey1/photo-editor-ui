@@ -18,7 +18,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "fileSelect",
   computed: {
-    photo(): any {
+    photo(): string {
       return this.$store.state.photo;
     },
   },
@@ -33,7 +33,7 @@ export default defineComponent({
       const fileReader = new FileReader();
       fileReader.readAsDataURL(this.selectedFile!);
       fileReader.addEventListener("load", () => {
-        this.$store.dispatch("setPhoto", { photo: fileReader.result });
+        this.$store.dispatch("setPhoto", fileReader.result);
       });
     },
 

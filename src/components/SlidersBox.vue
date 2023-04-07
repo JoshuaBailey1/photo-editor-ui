@@ -24,7 +24,7 @@
       thumb-label="always"
       @vnode-updated="updateSaturation(saturation)"
     ></v-slider>
-    <v-btn @click="resetSliders()">Reset</v-btn>
+    <v-btn color="red" @click="resetSliders()">Reset</v-btn>
   </div>
 </template>
 
@@ -43,7 +43,6 @@ export default defineComponent({
   methods: {
     resetSliders() {
       this.brightness = 100;
-      console.log("hi?");
       this.$store.dispatch("setBrightness", this.brightness);
       this.contrast = 100;
       this.$store.dispatch("setContrast", this.contrast);
@@ -51,15 +50,12 @@ export default defineComponent({
       this.$store.dispatch("setSaturation", this.saturation);
     },
     updateBrightness(brightness: number) {
-      console.log(brightness);
       this.$store.dispatch("setBrightness", brightness);
     },
     updateContrast(contrast: number) {
-      console.log(contrast);
       this.$store.dispatch("setContrast", contrast);
     },
     updateSaturation(saturation: number) {
-      console.log(saturation);
       this.$store.dispatch("setSaturation", saturation);
     },
   },
