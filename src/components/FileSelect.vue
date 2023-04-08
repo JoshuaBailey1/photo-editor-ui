@@ -21,6 +21,9 @@ export default defineComponent({
     photo(): string {
       return this.$store.state.photo;
     },
+    originalPhoto(): string {
+      return this.$store.state.originalPhoto;
+    },
   },
   data() {
     return {
@@ -34,15 +37,8 @@ export default defineComponent({
       fileReader.readAsDataURL(this.selectedFile!);
       fileReader.addEventListener("load", () => {
         this.$store.dispatch("setPhoto", fileReader.result);
+        this.$store.dispatch("setOriginalPhoto", fileReader.result);
       });
-    },
-
-    async onImport() {
-      // await axios.post("http://localhost:8080/adjustment/contrast", fd, {
-      //   headers: {
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // });
     },
   },
 });
