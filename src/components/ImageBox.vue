@@ -1,6 +1,10 @@
 <template>
   <div>
-    <v-img class="image" v-bind:src="$store.state.photo" />
+    <v-img
+      data-caman="brightness(100)"
+      class="image"
+      v-bind:src="$store.state.photo"
+    />
   </div>
 </template>
 

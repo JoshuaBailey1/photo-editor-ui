@@ -6,7 +6,7 @@ import { AdjustmentRequest } from "./dtos/adjustment.request";
 export default createStore({
   state: {
     photo: "",
-    photoWithEdits: "",
+    originalPhoto: "",
     brightness: 100,
     contrast: 100,
     saturation: 100,
@@ -14,6 +14,9 @@ export default createStore({
   mutations: {
     setPhoto(state, photo: string) {
       state.photo = photo;
+    },
+    setOriginalPhoto(state, originalPhoto: string) {
+      state.originalPhoto = originalPhoto;
     },
     setBrightness(state, brightness: number) {
       state.brightness = brightness;
@@ -39,6 +42,9 @@ export default createStore({
 
     setPhoto({ commit }, data: string) {
       commit("setPhoto", data);
+    },
+    setOriginalPhoto({ commit }, data: string) {
+      commit("setOriginalPhoto", data);
     },
     setBrightness({ commit }, data: number) {
       commit("setBrightness", data);
