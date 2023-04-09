@@ -4,6 +4,7 @@
     <slidersBox class="allSliders" />
     <fileSelect class="fileSelector" />
     <exportButton class="exportButton" />
+    <generateImage class="generateImage" />
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import { defineComponent } from "vue";
 import exportButton from "./ExportButton.vue";
 import fileSelect from "./FileSelect.vue";
+import generateImage from "./GenerateImage.vue";
 import imageBox from "./ImageBox.vue";
 import slidersBox from "./SlidersBox.vue";
 
@@ -21,6 +23,7 @@ export default defineComponent({
     slidersBox,
     fileSelect,
     exportButton,
+    generateImage,
   },
 });
 </script>
@@ -50,6 +53,13 @@ export default defineComponent({
 
 .exportButton {
   grid-row-start: 3;
+  grid-column-start: 3;
+  margin: 0 auto;
+  align-self: end;
+}
+
+.generateImage {
+  grid-row-start: 2;
   grid-column-start: 3;
   margin: 0 auto;
   align-self: end;
