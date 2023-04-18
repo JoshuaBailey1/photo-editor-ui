@@ -27,6 +27,12 @@ export default defineComponent({
     saturation(): number {
       return this.$store.state.saturation;
     },
+    sepia(): number {
+      return this.$store.state.sepia;
+    },
+    blur(): number {
+      return this.$store.state.blur;
+    },
   },
   data() {
     return {};
@@ -39,7 +45,7 @@ export default defineComponent({
       canvas.height = image.height;
       canvas.width = image.width;
       let ctx = canvas.getContext("2d");
-      ctx!.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) saturate(${this.saturation}%)`;
+      ctx!.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) saturate(${this.saturation}%) sepia(${this.sepia}%) blur(${this.blur}px)`;
       ctx?.drawImage(image, 0, 0, image.width, image.height);
       let downloadButton = document.createElement("a");
       downloadButton.download = "image.png";
