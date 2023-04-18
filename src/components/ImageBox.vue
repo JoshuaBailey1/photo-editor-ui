@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-img
-      data-caman="brightness(100)"
-      class="image"
-      v-bind:src="$store.state.photo"
-    />
+    <v-img class="image" v-bind:src="$store.state.photo" />
   </div>
 </template>
 
@@ -35,11 +31,6 @@ export default defineComponent({
 
 <style scoped>
 .image {
-  height: 100%;
-  width: 100%;
-  max-height: 100vh;
-  max-width: 75vw;
-
   filter: v-bind(filters);
 }
 </style>

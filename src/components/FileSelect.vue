@@ -7,7 +7,9 @@
       type="file"
       @change="onFileSelected"
       accept="image/png, image/jpeg"
-      prepend-icon="mdi-camera"
+      prepend-inner-icon="mdi-camera"
+      prepend-icon=""
+      bg-color="grey-lighten-2"
     />
   </div>
 </template>
