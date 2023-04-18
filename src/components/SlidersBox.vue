@@ -23,11 +23,34 @@
       v-model="saturation"
       label="saturation"
       prepend-icon="mdi-palette"
-      track-color="orange"
+      track-color="yellow"
       max="200"
       min="0"
       thumb-label="always"
       @vnode-updated="updateSaturation(saturation)"
+    ></v-slider>
+    <v-slider
+      v-model="sepia"
+      label="sepia"
+      prepend-icon="mdi-brush"
+      show-ticks="always"
+      track-color="orange"
+      max="100"
+      min="0"
+      thumb-label="always"
+      @vnode-updated="updateSepia(sepia)"
+    ></v-slider>
+    <v-slider
+      v-model="blur"
+      label="blur"
+      prepend-icon="mdi-blur"
+      show-ticks="always"
+      track-color="blue"
+      tick-size="3"
+      max="5"
+      min="0"
+      thumb-label="always"
+      @vnode-updated="updateBlur(blur)"
     ></v-slider>
     <v-slider
       v-model="sharpness"
@@ -70,6 +93,8 @@ export default defineComponent({
       brightness: 100,
       contrast: 100,
       saturation: 100,
+      sepia: 0,
+      blur: 0,
       sharpness: 0,
     };
   },
@@ -81,6 +106,10 @@ export default defineComponent({
       this.$store.dispatch("setContrast", this.contrast);
       this.saturation = 100;
       this.$store.dispatch("setSaturation", this.saturation);
+      this.sepia = 0;
+      this.$store.dispatch("setSepia", this.sepia);
+      this.blur = 0;
+      this.$store.dispatch("setBlur", this.blur);
       this.sharpness = 0;
       this.$store.dispatch("setPhoto", this.originalPhoto);
     },
@@ -92,6 +121,12 @@ export default defineComponent({
     },
     updateSaturation(saturation: number) {
       this.$store.dispatch("setSaturation", saturation);
+    },
+    updateSepia(sepia: number) {
+      this.$store.dispatch("setSepia", sepia);
+    },
+    updateBlur(blur: number) {
+      this.$store.dispatch("setBlur", blur);
     },
     async updateSharpness(sharpness: number) {
       if (this.sharpness == 0) {

@@ -22,8 +22,14 @@ export default defineComponent({
     saturation() {
       return `saturate(${this.$store.state.saturation}%)`;
     },
+    sepia() {
+      return `sepia(${this.$store.state.sepia}%)`;
+    },
+    blur() {
+      return `blur(${this.$store.state.blur}px)`;
+    },
     filters() {
-      return `brightness(${this.$store.state.brightness}%) contrast(${this.$store.state.contrast}%) saturate(${this.$store.state.saturation}%)`;
+      return `brightness(${this.$store.state.brightness}%) contrast(${this.$store.state.contrast}%) saturate(${this.$store.state.saturation}%) sepia(${this.$store.state.sepia}%) blur(${this.$store.state.blur}px)`;
     },
   },
 });

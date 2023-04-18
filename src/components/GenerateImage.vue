@@ -6,12 +6,13 @@
       label="Search Terms"
       bg-color="grey-lighten-2"
       placeholder="Mount Rainier"
+      density="compact"
     ></v-text-field>
     <v-btn
-      color="yellow"
+      color="grey-lighten-2"
       append-icon="mdi-image-search"
       @click="getImageFromPexel()"
-      >Find Images</v-btn
+      >Find Image</v-btn
     >
   </div>
 </template>
@@ -49,5 +50,7 @@ export default defineComponent({
 .generateImage {
   display: grid;
   grid-template-columns: 50fr 50fr;
+  gap: 0.3em;
+  max-height: 1vh;
 }
 </style>

@@ -46,7 +46,8 @@ export default defineComponent({
   background-color: #343434;
 }
 .allSliders {
-  grid-row-start: 4;
+  grid-row-start: 3;
+  grid-row-end: 5;
   grid-column-start: 3;
 }
 .fileSelector {
@@ -60,7 +61,9 @@ export default defineComponent({
 }
 
 .generateImage {
-  grid-row-start: 3;
+  grid-row-start: 2;
   grid-column-start: 3;
+
+  align-self: center;
 }
 </style>

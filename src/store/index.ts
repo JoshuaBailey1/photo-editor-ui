@@ -10,6 +10,8 @@ export default createStore({
     brightness: 100,
     contrast: 100,
     saturation: 100,
+    sepia: 0,
+    blur: 0,
   },
   mutations: {
     setPhoto(state, photo: string) {
@@ -26,6 +28,12 @@ export default createStore({
     },
     setSaturation(state, brightness: number) {
       state.saturation = brightness;
+    },
+    setSepia(state, sepia: number) {
+      state.sepia = sepia;
+    },
+    setBlur(state, blur: number) {
+      state.blur = blur;
     },
   },
   actions: {
@@ -54,6 +62,12 @@ export default createStore({
     },
     setSaturation({ commit }, data: number) {
       commit("setSaturation", data);
+    },
+    setSepia({ commit }, data: number) {
+      commit("setSepia", data);
+    },
+    setBlur({ commit }, data: number) {
+      commit("setBlur", data);
     },
   },
   getters: {},
