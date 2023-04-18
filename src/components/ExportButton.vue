@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <v-btn color="green" @click="exportPhoto()">Export</v-btn>
+  <div class="exportButton">
+    <v-btn
+      color="green"
+      append-icon="mdi-content-save-edit"
+      @click="exportPhoto()"
+      >Export</v-btn
+    >
   </div>
 </template>
 
@@ -37,7 +42,7 @@ export default defineComponent({
       ctx!.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) saturate(${this.saturation}%)`;
       ctx?.drawImage(image, 0, 0, image.width, image.height);
       let downloadButton = document.createElement("a");
-      downloadButton.download = "insert cool name here.png";
+      downloadButton.download = "image.png";
       downloadButton.href = canvas.toDataURL();
       downloadButton.click();
     },
@@ -45,4 +50,8 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.exportButton {
+  display: grid;
+}
+</style>

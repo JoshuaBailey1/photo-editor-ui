@@ -1,11 +1,18 @@
 <template>
-  <div>
+  <div class="generateImage">
     <v-text-field
+      clearable
       v-model="searchTerms"
-      label="image"
-      placeholder="tigers"
+      label="Search Terms"
+      bg-color="grey-lighten-2"
+      placeholder="Mount Rainier"
     ></v-text-field>
-    <v-btn color="yellow" @click="getImageFromPexel()">Get Image</v-btn>
+    <v-btn
+      color="yellow"
+      append-icon="mdi-image-search"
+      @click="getImageFromPexel()"
+      >Find Images</v-btn
+    >
   </div>
 </template>
 
@@ -38,4 +45,9 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.generateImage {
+  display: grid;
+  grid-template-columns: 50fr 50fr;
+}
+</style>

@@ -31,11 +31,6 @@ export default defineComponent({
 
 <style scoped>
 .image {
-  height: 100%;
-  width: 100%;
-  max-height: 100vh;
-  max-width: 75vw;
-
   filter: v-bind(filters);
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="slidersBox">
     <v-slider
       v-model="brightness"
       label="brightness"
+      prepend-icon="mdi-brightness-4"
+      track-color="white"
       max="200"
       min="0"
       thumb-label="always"
@@ -11,6 +13,7 @@
     <v-slider
       v-model="contrast"
       label="contrast"
+      prepend-icon="mdi-contrast-circle"
       max="200"
       min="0"
       thumb-label="always"
@@ -19,6 +22,8 @@
     <v-slider
       v-model="saturation"
       label="saturation"
+      prepend-icon="mdi-palette"
+      track-color="orange"
       max="200"
       min="0"
       thumb-label="always"
@@ -27,15 +32,22 @@
     <v-slider
       v-model="sharpness"
       label="sharpness"
+      prepend-icon="mdi-sword"
       step="1"
       show-ticks="always"
+      track-color="red"
       tick-size="3"
       max="10"
       min="0"
       thumb-label="always"
       @vnode-updated="updateSharpness(sharpness)"
     ></v-slider>
-    <v-btn color="red" @click="resetSliders()">Reset</v-btn>
+    <v-btn
+      color="red"
+      append-icon="mdi-arrow-u-left-top"
+      @click="resetSliders()"
+      >Reset</v-btn
+    >
   </div>
 </template>
 
@@ -100,4 +112,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style>
+.slidersBox {
+  display: grid;
+}
+</style>

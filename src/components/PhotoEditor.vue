@@ -30,38 +30,37 @@ export default defineComponent({
 
 <style scoped>
 .photoEditor {
+  height: 100vh;
+  width: 100vw;
   display: grid;
-  grid-template-columns: 1% 74% 24% 1%;
-  grid-template-rows: 2% 23% 73% 2%;
+  grid-template-columns: 0 3fr 1fr 0;
+  grid-template-rows: 0 1fr 1fr 4fr 1fr 0;
+  gap: 1rem;
 }
 .mainImage {
   grid-row-start: 2;
-  grid-row-end: 4;
+  grid-row-end: 6;
   grid-column-start: 2;
-  place-self: stretch;
+
+  border: 1vw solid #343434;
+  background-color: #343434;
 }
 .allSliders {
-  grid-row-start: 3;
+  grid-row-start: 4;
   grid-column-start: 3;
-  align-self: center;
 }
 .fileSelector {
   grid-row-start: 2;
   grid-column-start: 3;
-  align-self: center;
 }
 
 .exportButton {
-  grid-row-start: 3;
+  grid-row-start: 5;
   grid-column-start: 3;
-  margin: 0 auto;
-  align-self: end;
 }
 
 .generateImage {
-  grid-row-start: 2;
+  grid-row-start: 3;
   grid-column-start: 3;
-  margin: 0 auto;
-  align-self: end;
 }
 </style>
