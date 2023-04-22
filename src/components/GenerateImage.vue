@@ -8,14 +8,15 @@
       bg-color="grey-lighten-4"
       density="compact"
       placeholder="Mountains"
+      @click:clear="onTextCleared"
     ></v-text-field>
     <v-btn
       color="grey-lighten-4"
       append-icon="mdi-image-search"
-      density="default"
       size="large"
       @click="getImageFromPexel()"
-      >Find Image</v-btn
+      height="42"
+      >Search</v-btn
     >
   </div>
 </template>
@@ -42,9 +43,12 @@ export default defineComponent({
       const src = await axios.get(
         `${Constants.Connections.PhotoEditorApiUrl}/import/image/${this.searchTerms}`
       );
-
       this.$store.dispatch("setPhoto", src.data);
       this.$store.dispatch("setOriginalPhoto", src.data);
+    },
+    onTextCleared() {
+      this.$store.dispatch("setPhoto", "");
+      this.$store.dispatch("setOriginalPhoto", "");
     },
   },
 });

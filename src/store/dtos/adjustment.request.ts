@@ -1,4 +1,4 @@
 export interface AdjustmentRequest {
-  image: any;
-  intensity: string;
+  image: string;
+  intensity: number;
 }

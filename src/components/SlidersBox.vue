@@ -1,6 +1,6 @@
 <template>
   <div class="slidersBox">
-    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+    <v-card color="black" width="100" height="50" variant="text">
       <v-card-text class="text-md-center">brightness</v-card-text>
     </v-card>
     <v-slider
@@ -15,7 +15,7 @@
       @vnode-updated="updateBrightness(brightness)"
     >
     </v-slider>
-    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+    <v-card color="black" width="100" height="50" variant="text">
       <v-card-text class="text-md-center">contrast</v-card-text>
     </v-card>
     <v-slider
@@ -29,7 +29,7 @@
       thumb-label="always"
       @vnode-updated="updateContrast(contrast)"
     ></v-slider>
-    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+    <v-card color="black" width="100" height="50" variant="text">
       <v-card-text class="text-md-center">saturation</v-card-text>
     </v-card>
     <v-slider
@@ -43,7 +43,7 @@
       thumb-label="always"
       @vnode-updated="updateSaturation(saturation)"
     ></v-slider>
-    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+    <v-card color="black" width="100" height="50" variant="text">
       <v-card-text class="text-md-center">sepia</v-card-text>
     </v-card>
     <v-slider
@@ -58,7 +58,7 @@
       thumb-label="always"
       @vnode-updated="updateSepia(sepia)"
     ></v-slider>
-    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+    <v-card color="black" width="100" height="50" variant="text">
       <v-card-text class="text-md-center">blur</v-card-text>
     </v-card>
     <v-slider
@@ -74,7 +74,7 @@
       thumb-label="always"
       @vnode-updated="updateBlur(blur)"
     ></v-slider>
-    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+    <v-card color="black" width="100" height="50" variant="text">
       <v-card-text class="text-md-center">sharpness</v-card-text>
     </v-card>
     <v-slider
@@ -106,6 +106,7 @@
 import axios from "axios";
 import { defineComponent } from "vue";
 import { Constants } from "../../constants";
+import { AdjustmentRequest } from "../store/dtos/adjustment.request";
 
 export default defineComponent({
   name: "slidersBox",
@@ -125,6 +126,7 @@ export default defineComponent({
       sepia: 0,
       blur: 0,
       sharpness: 0,
+      currentSharpness: 0,
     };
   },
   methods: {
@@ -158,17 +160,21 @@ export default defineComponent({
       this.$store.dispatch("setBlur", blur);
     },
     async updateSharpness(sharpness: number) {
-      if (this.sharpness == 0) {
+      if (this.sharpness == this.currentSharpness) {
+        //do nothing
+      } else if (this.sharpness == 0) {
         this.$store.dispatch("setPhoto", this.originalPhoto);
       } else {
+        const adjustmentRequest: AdjustmentRequest = {
+          image: this.originalPhoto,
+          intensity: sharpness,
+        };
         const sharpened = await axios.post(
           `${Constants.Connections.PhotoEditorApiUrl}/adjustment/sharpness`,
-          {
-            image: this.originalPhoto,
-            intensity: sharpness,
-          }
+          adjustmentRequest
         );
 
+        this.currentSharpness = sharpness;
         this.$store.dispatch("setPhoto", sharpened.data);
       }
     },
@@ -181,6 +187,7 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 1fr 3.25fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
   align-items: center;
 }
 .resetButton {
