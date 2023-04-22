@@ -1,16 +1,19 @@
 <template>
   <div class="generateImage">
     <v-text-field
+      variant="solo"
       clearable
       v-model="searchTerms"
       label="Search Terms"
-      bg-color="grey-lighten-2"
-      placeholder="Mount Rainier"
+      bg-color="grey-lighten-4"
       density="compact"
+      placeholder="Mountains"
     ></v-text-field>
     <v-btn
-      color="grey-lighten-2"
+      color="grey-lighten-4"
       append-icon="mdi-image-search"
+      density="default"
+      size="large"
       @click="getImageFromPexel()"
       >Find Image</v-btn
     >
@@ -20,6 +23,7 @@
 <script lang="ts">
 import axios from "axios";
 import { defineComponent } from "vue";
+import { Constants } from "../../constants";
 
 export default defineComponent({
   name: "generateImage",
@@ -36,7 +40,7 @@ export default defineComponent({
   methods: {
     async getImageFromPexel() {
       const src = await axios.get(
-        `http://localhost:8080/import/image/${this.searchTerms}`
+        `${Constants.Connections.PhotoEditorApiUrl}/import/image/${this.searchTerms}`
       );
 
       this.$store.dispatch("setPhoto", src.data);
@@ -49,8 +53,7 @@ export default defineComponent({
 <style>
 .generateImage {
   display: grid;
-  grid-template-columns: 50fr 50fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0.3em;
-  max-height: 1vh;
 }
 </style>

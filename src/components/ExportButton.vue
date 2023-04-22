@@ -3,6 +3,7 @@
     <v-btn
       color="green"
       append-icon="mdi-content-save-edit"
+      size="x-large"
       @click="exportPhoto()"
       >Export</v-btn
     >

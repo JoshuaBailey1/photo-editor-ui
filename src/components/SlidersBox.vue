@@ -1,64 +1,90 @@
 <template>
   <div class="slidersBox">
+    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+      <v-card-text class="text-md-center">brightness</v-card-text>
+    </v-card>
     <v-slider
+      hide-details
       v-model="brightness"
-      label="brightness"
       prepend-icon="mdi-brightness-4"
       track-color="white"
+      color="white"
       max="200"
       min="0"
       thumb-label="always"
       @vnode-updated="updateBrightness(brightness)"
-    ></v-slider>
+    >
+    </v-slider>
+    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+      <v-card-text class="text-md-center">contrast</v-card-text>
+    </v-card>
     <v-slider
+      hide-details
       v-model="contrast"
-      label="contrast"
       prepend-icon="mdi-contrast-circle"
+      color="black"
+      track-color="black"
       max="200"
       min="0"
       thumb-label="always"
       @vnode-updated="updateContrast(contrast)"
     ></v-slider>
+    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+      <v-card-text class="text-md-center">saturation</v-card-text>
+    </v-card>
     <v-slider
+      hide-details
       v-model="saturation"
-      label="saturation"
       prepend-icon="mdi-palette"
       track-color="yellow"
+      color="yellow"
       max="200"
       min="0"
       thumb-label="always"
       @vnode-updated="updateSaturation(saturation)"
     ></v-slider>
+    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+      <v-card-text class="text-md-center">sepia</v-card-text>
+    </v-card>
     <v-slider
+      hide-details
       v-model="sepia"
-      label="sepia"
       prepend-icon="mdi-brush"
       show-ticks="always"
       track-color="orange"
+      color="orange"
       max="100"
       min="0"
       thumb-label="always"
       @vnode-updated="updateSepia(sepia)"
     ></v-slider>
+    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+      <v-card-text class="text-md-center">blur</v-card-text>
+    </v-card>
     <v-slider
+      hide-details
       v-model="blur"
-      label="blur"
       prepend-icon="mdi-blur"
       show-ticks="always"
       track-color="blue"
+      color="blue"
       tick-size="3"
       max="5"
       min="0"
       thumb-label="always"
       @vnode-updated="updateBlur(blur)"
     ></v-slider>
+    <v-card color="grey-lighten-3" max-width="100" max-height="50">
+      <v-card-text class="text-md-center">sharpness</v-card-text>
+    </v-card>
     <v-slider
+      hide-details
       v-model="sharpness"
-      label="sharpness"
       prepend-icon="mdi-sword"
       step="1"
       show-ticks="always"
-      track-color="red"
+      track-color="#9A2A2A"
+      color="#9A2A2A"
       tick-size="3"
       max="10"
       min="0"
@@ -68,6 +94,8 @@
     <v-btn
       color="red"
       append-icon="mdi-arrow-u-left-top"
+      class="resetButton"
+      size="x-large"
       @click="resetSliders()"
       >Reset</v-btn
     >
@@ -77,6 +105,7 @@
 <script lang="ts">
 import axios from "axios";
 import { defineComponent } from "vue";
+import { Constants } from "../../constants";
 
 export default defineComponent({
   name: "slidersBox",
@@ -133,7 +162,7 @@ export default defineComponent({
         this.$store.dispatch("setPhoto", this.originalPhoto);
       } else {
         const sharpened = await axios.post(
-          "http://localhost:8080/adjustment/sharpness",
+          `${Constants.Connections.PhotoEditorApiUrl}/adjustment/sharpness`,
           {
             image: this.originalPhoto,
             intensity: sharpness,
@@ -150,5 +179,13 @@ export default defineComponent({
 <style>
 .slidersBox {
   display: grid;
+  grid-template-columns: 1fr 3.25fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+.resetButton {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 </style>

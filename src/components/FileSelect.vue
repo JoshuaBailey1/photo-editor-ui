@@ -4,12 +4,13 @@
       label="Select Image"
       show-size
       density="compact"
+      variant="solo"
       type="file"
       @change="onFileSelected"
       accept="image/png, image/jpeg"
       prepend-inner-icon="mdi-camera"
       prepend-icon=""
-      bg-color="grey-lighten-2"
+      bg-color="grey-lighten-4"
     />
   </div>
 </template>
