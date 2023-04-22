@@ -4,12 +4,14 @@
       label="Select Image"
       show-size
       density="compact"
+      variant="solo"
       type="file"
       @change="onFileSelected"
+      @click:clear="onFileCleared"
       accept="image/png, image/jpeg"
       prepend-inner-icon="mdi-camera"
       prepend-icon=""
-      bg-color="grey-lighten-2"
+      bg-color="grey-lighten-4"
     />
   </div>
 </template>
@@ -35,12 +37,18 @@ export default defineComponent({
   methods: {
     onFileSelected(event: any) {
       this.selectedFile = event.target.files[0];
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(this.selectedFile!);
-      fileReader.addEventListener("load", () => {
-        this.$store.dispatch("setPhoto", fileReader.result);
-        this.$store.dispatch("setOriginalPhoto", fileReader.result);
-      });
+      if (this.selectedFile) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(this.selectedFile!);
+        fileReader.addEventListener("load", () => {
+          this.$store.dispatch("setPhoto", fileReader.result);
+          this.$store.dispatch("setOriginalPhoto", fileReader.result);
+        });
+      }
+    },
+    onFileCleared() {
+      this.$store.dispatch("setPhoto", "");
+      this.$store.dispatch("setOriginalPhoto", "");
     },
   },
 });
