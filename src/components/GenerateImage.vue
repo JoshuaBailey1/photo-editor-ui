@@ -43,6 +43,7 @@ export default defineComponent({
       const src = await axios.get(
         `${Constants.Connections.PhotoEditorApiUrl}/import/image/${this.searchTerms}`
       );
+
       this.$store.dispatch("setPhoto", src.data);
       this.$store.dispatch("setOriginalPhoto", src.data);
     },

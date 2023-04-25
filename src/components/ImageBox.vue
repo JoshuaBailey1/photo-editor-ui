@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="imageBox">
     <v-img class="image" v-bind:src="$store.state.photo" />
   </div>
 </template>
@@ -36,6 +36,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.imageBox {
+  display: grid;
+}
 .image {
   filter: v-bind(filters);
 }

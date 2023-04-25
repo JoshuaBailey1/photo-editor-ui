@@ -13,19 +13,14 @@ export default defineComponent({
   components: {
     photoEditor,
   },
+  mounted() {
+    document.title = "Photo Editor";
+  },
 });
 </script>
 
 <style>
-.main {
-  background-color: grey;
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  overflow: hidden;
-}
-* {
-  margin: 0;
-  padding: 0;
+html {
+  overflow-y: hidden;
 }
 </style>

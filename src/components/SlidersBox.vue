@@ -169,6 +169,7 @@ export default defineComponent({
           image: this.originalPhoto,
           intensity: sharpness,
         };
+
         const sharpened = await axios.post(
           `${Constants.Connections.PhotoEditorApiUrl}/adjustment/sharpness`,
           adjustmentRequest

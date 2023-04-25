@@ -42,16 +42,26 @@ export default defineComponent({
     exportPhoto() {
       let image = new Image();
       image.src = this.photo;
+
+      const imageExtension = this.photo.substring(
+        this.photo.indexOf("/") + 1,
+        this.photo.indexOf(";")
+      );
+
       let canvas = document.createElement("canvas");
       canvas.height = image.height;
       canvas.width = image.width;
       let ctx = canvas.getContext("2d");
-      ctx!.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) saturate(${this.saturation}%) sepia(${this.sepia}%) blur(${this.blur}px)`;
-      ctx?.drawImage(image, 0, 0, image.width, image.height);
-      let downloadButton = document.createElement("a");
-      downloadButton.download = "image.png";
-      downloadButton.href = canvas.toDataURL();
-      downloadButton.click();
+
+      if (ctx) {
+        ctx.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) saturate(${this.saturation}%) sepia(${this.sepia}%) blur(${this.blur}px)`;
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+
+        let downloadButton = document.createElement("a");
+        downloadButton.download = `image.${imageExtension}`;
+        downloadButton.href = canvas.toDataURL();
+        downloadButton.click();
+      }
     },
   },
 });

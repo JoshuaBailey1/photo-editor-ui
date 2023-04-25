@@ -6,9 +6,9 @@
       density="compact"
       variant="solo"
       type="file"
-      @change="onFileSelected"
+      @input="onFileSelected"
       @click:clear="onFileCleared"
-      accept="image/png, image/jpeg"
+      accept="image/png, image/jpeg, image/bmp, image/tiff, image/gif, image/webp"
       prepend-inner-icon="mdi-camera"
       prepend-icon=""
       bg-color="grey-lighten-4"
@@ -37,9 +37,11 @@ export default defineComponent({
   methods: {
     onFileSelected(event: any) {
       this.selectedFile = event.target.files[0];
+
       if (this.selectedFile) {
         const fileReader = new FileReader();
-        fileReader.readAsDataURL(this.selectedFile!);
+
+        fileReader.readAsDataURL(this.selectedFile);
         fileReader.addEventListener("load", () => {
           this.$store.dispatch("setPhoto", fileReader.result);
           this.$store.dispatch("setOriginalPhoto", fileReader.result);
