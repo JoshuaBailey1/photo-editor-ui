@@ -33,7 +33,6 @@ export default defineComponent({
 <style scoped>
 .photoEditor {
   height: 100vh;
-  width: 100vw;
   display: grid;
 
   grid-template-columns: 0 3fr 1fr 0;
@@ -77,7 +76,6 @@ export default defineComponent({
   padding: 1vw;
   border-radius: 0 0 3px 3px;
 }
-
 .generateImage {
   grid-row-start: 3;
   grid-column-start: 3;
@@ -87,7 +85,6 @@ export default defineComponent({
   align-self: center;
   border-radius: 3px;
 }
-
 .adjustmentsPanel {
   grid-column-start: 3;
   grid-row-start: 4;
@@ -96,7 +93,6 @@ export default defineComponent({
   border: 0.35vw solid #343434;
   background-color: silver;
 }
-
 .inputs {
   grid-column-start: 3;
   grid-row-start: 2;
