@@ -13,6 +13,9 @@ export default defineComponent({
   components: {
     photoEditor,
   },
+  mounted() {
+    document.title = "Photo Editor";
+  },
 });
 </script>
 
