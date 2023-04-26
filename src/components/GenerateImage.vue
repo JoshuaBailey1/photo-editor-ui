@@ -9,6 +9,7 @@
       density="compact"
       placeholder="Mountains"
       @click:clear="onTextCleared"
+      class="textBox"
     ></v-text-field>
     <v-btn
       color="grey-lighten-4"
@@ -17,6 +18,14 @@
       @click="getImageFromPexel()"
       height="42"
       >Search</v-btn
+    >
+    <v-btn
+      color="grey-lighten-4"
+      append-icon="mdi-robot-outline"
+      size="large"
+      @click="getImageFromOpenAI()"
+      height="42"
+      >Generate</v-btn
     >
   </div>
 </template>
@@ -39,6 +48,14 @@ export default defineComponent({
     };
   },
   methods: {
+    async getImageFromOpenAI() {
+      const src = await axios.get(
+        `${Constants.Connections.PhotoEditorApiUrl}/import/image/ai/${this.searchTerms}`
+      );
+
+      this.$store.dispatch("setPhoto", src.data);
+      this.$store.dispatch("setOriginalPhoto", src.data);
+    },
     async getImageFromPexel() {
       const src = await axios.get(
         `${Constants.Connections.PhotoEditorApiUrl}/import/image/${this.searchTerms}`
@@ -59,6 +76,11 @@ export default defineComponent({
 .generateImage {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 0.3em;
+}
+.textBox {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 </style>
